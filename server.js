@@ -14,91 +14,45 @@ const app = express();
  */
 const WIKI_CATEGORY_TOPICS = {
   "rome-churches-early": [
-    "Category:Churches in Rome",
-    "Category:Roman Catholic churches in Rome",
-    "Category:Titular churches in Rome",
-    "Category:Basilicas in Rome"
+    "Categoria:Chiese di Roma",
+    "Categoria:Basiliche di Roma"
   ],
 
   "rome-churches-renaissance": [
-    "Category:Renaissance churches in Rome",
-    "Category:Baroque church buildings in Rome"
+    "Categoria:Chiese di Roma"
   ],
 
   "rome-ancient-sites": [
-    "Category:Ancient Roman sites in Rome",
-    "Category:Roman ruins in Rome",
-    "Category:Archaeological sites in Rome"
+    "Categoria:Siti archeologici di Roma",
+    "Categoria:Architetture di Roma antica",
+    "Categoria:Monumenti di Roma antica"
   ],
 
   "rome-museums": [
-    "Category:Museums in Rome",
-    "Category:Art museums and galleries in Rome",
-    "Category:History museums in Rome"
+    "Categoria:Musei di Roma"
   ],
+
   "rome-palazzi": [
-    "Category:Palaces in Rome",
-    "Category:Historic buildings in Rome"
+    "Categoria:Palazzi di Roma"
   ],
+
   "rome-monuments": [
-    "Category:Fountains in Rome",
-    "Category:Statues in Rome",
-    "Category:Monuments and memorials in Rome"
+    "Categoria:Fontane di Roma",
+    "Categoria:Monumenti di Roma"
   ],
+
   "rome-public-places": [
-    "Category:Public markets in Rome",
-    "Category:Piazzas in Rome",
-    "Category:Tourist attractions in Rome"
+    "Categoria:Piazze di Roma",
+    "Categoria:Mercati di Roma"
   ],
+
   "rome-architecture": [
-    "Category:Architecture in Rome",
-    "Category:Buildings and structures in Rome"
+    "Categoria:Architetture di Roma",
+    "Categoria:Edifici di Roma"
   ]
 };
 
-const WIKI_TOPICS = {
-  "rome-churches-early": [
-    'deepcat:"Churches in Rome"',
-    'deepcat:"Roman Catholic churches in Rome"',
-    'deepcat:"Titular churches in Rome"',
-    'deepcat:"Basilicas in Rome"'
-  ],
-
-  "rome-churches-renaissance": [
-    'deepcat:"Renaissance churches in Rome"',
-    'deepcat:"Baroque church buildings in Rome"'
-  ],
-
-  "rome-ancient-sites": [
-    'deepcat:"Ancient Roman sites in Rome"',
-    'deepcat:"Roman ruins in Rome"',
-    'deepcat:"Archaeological sites in Rome"'
-  ],
-
-  "rome-museums": [
-    'deepcat:"Museums in Rome"',
-    'deepcat:"Art museums and galleries in Rome"',
-    'deepcat:"History museums in Rome"'
-  ],
-  "rome-palazzi": [
-    'deepcat:"Palaces in Rome"',
-    'deepcat:"Historic buildings in Rome"'
-  ],
-  "rome-monuments": [
-    'deepcat:"Fountains in Rome"',
-    'deepcat:"Statues in Rome"',
-    'deepcat:"Monuments and memorials in Rome"'
-  ],
-  "rome-public-places": [
-    'deepcat:"Public markets in Rome"',
-    'deepcat:"Piazzas in Rome"',
-    'deepcat:"Tourist attractions in Rome"'
-  ],
-  "rome-architecture": [
-    'deepcat:"Architecture in Rome"',
-    'deepcat:"Buildings and structures in Rome"'
-  ]
-};
+const WIKI_TOPICS = {};
 
 /**
  * =========================
@@ -180,13 +134,6 @@ async function mapWithLimit(items, limit, mapper) {
  * HTML: https://www.gutenberg.org/cache/epub/50307/pg50307-images.html
  */
 const PETRARCH_SOURCE_URL = 'https://www.gutenberg.org/cache/epub/50307/pg50307-images.html';
-
-function normalizeSonnetText(s) {
-  return (s || '')
-    .replace(/\r/g, '')
-    .replace(/[ \t]+\n/g, '\n')
-    .trim();
-}
 
 function normalizeSonnetText(s) {
   return (s || '')

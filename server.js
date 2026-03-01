@@ -234,7 +234,7 @@ function categorizeArticle(title, text) {
 
 async function fetchWikipediaArticles(count = 6, concurrency = 4) {
   const requests = Array.from({ length: count }, () => ({
-    url: 'https://en.wikipedia.org/api/rest_v1/page/random/summary'
+    url: 'https://it.wikipedia.org/api/rest_v1/page/random/summary'
   }));
 
   const responses = await mapWithLimit(requests, concurrency, async (r) => {
@@ -261,7 +261,7 @@ async function fetchWikipediaArticles(count = 6, concurrency = 4) {
 }
 
 async function wikiSearchTitles(srsearch, limit = 50) {
-  const resp = await axios.get('https://en.wikipedia.org/w/api.php', {
+  const resp = await axios.get('https://it.wikipedia.org/w/api.php', {
     timeout: 8000,
     headers: { 'User-Agent': 'HumanitiesFeed/1.0 (contact: you@example.com)' },
     params: {
@@ -283,7 +283,7 @@ async function wikiSearchTitles(srsearch, limit = 50) {
 async function wikiSummariesForTitles(titles, concurrency = 4) {
   const safeTitles = (titles || []).filter(t => t && !t.startsWith('Category:'));
   const requests = safeTitles.map(title => ({
-    url: `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`
+    url: `https://it.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`
   }));
 
   const results = await mapWithLimit(requests, concurrency, async (r) => {
@@ -299,7 +299,7 @@ async function wikiSummariesForTitles(titles, concurrency = 4) {
       title: d.title,
       extract: d.extract || '',
       thumbnail: d.thumbnail?.source || d.originalimage?.source || null,
-      url: d.content_urls?.desktop?.page || `https://en.wikipedia.org/wiki/${encodeURIComponent(d.title)}`,
+      url: d.content_urls?.desktop?.page || `https://it.wikipedia.org/wiki/${encodeURIComponent(d.title)}`,
       type: d.description || 'Article',
       readTime: Math.max(1, Math.ceil(((d.extract || '').split(' ').length || 120) / 200)),
       category: categorizeArticle(d.title, d.extract || ''),
@@ -311,7 +311,7 @@ async function wikiSummariesForTitles(titles, concurrency = 4) {
 }
 
 async function getCategoryMembers(cmtitle, cmtype = 'page|subcat', cmlimit = 200, cmcontinue) {
-  const resp = await axios.get('https://en.wikipedia.org/w/api.php', {
+  const resp = await axios.get('https://it.wikipedia.org/w/api.php', {
     timeout: 10000,
     headers: { 'User-Agent': 'HumanitiesFeed/1.0 (contact: you@example.com)' },
     params: {

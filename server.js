@@ -673,7 +673,7 @@ const italianText = stripGutenbergTail(blocks[0]);
 const englishText = stripGutenbergTail(blocks[1]);
 
 return res.json({
-  source: 'Petrarch (Project Gutenberg)',
+  source: 'Petrarca (Project Gutenberg)',
   number: pickRoman,
   title: `Sonnet ${pickRoman}`,
 
